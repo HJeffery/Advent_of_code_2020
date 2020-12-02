@@ -3,20 +3,24 @@ Task:
 Find the two numbers in a list that sum to 2020 and multiply them together
 """
 
+
 def file_to_list(filename):
-    data_list = []
+    data = []
     with open(filename, 'r') as infile:
         for line in infile:
-            data_list.append(line.strip("\n"))
-    for counter, i in enumerate(data_list):
-        data_list[counter] = int(i)
-    return data_list
+            data.append(line.strip("\n"))
+    for counter, i in enumerate(data):
+        data[counter] = int(i)
+    return data
+
 
 def sum_and_multiply_2(expenses_list):
     for i in expenses_list:
         if 2020 - i in expenses_list:
-            multiplied_total = i * (2020 - i)
-    return multiplied_total
+            total = i * (2020 - i)
+            break
+    return total
+
 
 def sum_and_multiply_3(expenses_list):
     for counter, i in enumerate(expenses_list):
@@ -25,7 +29,9 @@ def sum_and_multiply_3(expenses_list):
             for k in expenses_list[counter:]:
                 if j + k == remainder:
                     multiplied_total = i * j * k
+                    break
     return multiplied_total
+
 
 data_list = file_to_list("expenses_report.txt")
 multiplied_total = sum_and_multiply_2(data_list)
