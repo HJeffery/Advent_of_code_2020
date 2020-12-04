@@ -28,7 +28,6 @@ def check_password_validity(passwords: list):
                 char_count += 1
         if lower <= char_count <= upper:
             valid_passwords += 1
-            print(" ".join(requirements), code, char_count)
     return valid_passwords
 
 
@@ -45,13 +44,10 @@ def check_new_password_validity(passwords: list):
         # Only want one condition to be True
         if (code[first - 1] == character) != (code[second - 1] == character):
             new_valid_passwords += 1
-            print(" ".join(requirements), code, new_valid_passwords)
     return new_valid_passwords
 
 
 data_list = file_to_list("day2_passwords.txt")
-print(data_list)
-print(len(data_list))
 valid = check_password_validity(data_list)
 print(f"There are {valid} valid passwords according to the original method")
 new_valid = check_new_password_validity(data_list)
